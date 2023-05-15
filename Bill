@@ -1,0 +1,107 @@
+package borrow_library2021;
+
+
+
+import borrow_library2021.Books;
+import borrow_library2021.user;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+public class Bill {
+
+ //-----------------------------------field-------------------------------------
+    
+    public final int amount = 10;  //file amount
+    private Date day = new Date();  //day the user enter the prograing
+    private String status;
+
+ //--------------------------------method and method constractor ----------------   
+    
+    //method and method constractor 
+    
+     public Bill(){
+        status=null;
+        
+     }
+    public Bill(String status) {
+        this.status = status;
+
+    }
+   
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+/**
+ * this method print information Bill to file
+ * @param box1
+ * @param box
+ * @throws FileNotFoundException
+ * @throws IOException 
+ */
+    public void printBill(user box1, Books box) throws FileNotFoundException, IOException {
+        File file = new File("C:\\Users\\Lenovo-\\Documents\\NetBeansProjects\\‏‏Borrow_Library - نسخة//Bill.txt");
+
+        FileWriter writee = new FileWriter(file, true);
+        PrintWriter Print = null;
+        Print = new PrintWriter(writee);
+        Print.println("------------------------------------------");
+        Print.println("      " + "  The Bill " + " " );
+        Print.println("------------------------------------------");
+        Print.println(" ");
+        
+        Print.print("Book Titel :\t ");
+        Print.println(box.getTitel());        //object from class books
+       
+        Print.println(" ");
+        Print.print("Name User :\t\t");
+        Print.println(user.username);
+        Print.print("ser ID :\t\t");
+        Print.println(user.userID);           //Because she public (using class not opject)
+        Print.print("number Phone :\t\t");
+        Print.println(user.phoneNumber);      //Because she public (using class not opject)
+ 
+        Print.print("Day :\t\t");
+        Print.println(day);
+        Print.print("Borrowing insurance :\t");
+        Print.println(amount);
+        Print.print("Status :\t\t");
+        Print.println(status);
+        Print.println("-----------------------------------");
+        Print.close();
+       
+    }
+        public void printBillinscreen(user box1, Books box) throws FileNotFoundException, IOException {
+
+        System.out.println("------------------------------------------");
+        System.out.println("      " + "  The Bill " + " " );
+        System.out.println("------------------------------------------");
+        System.out.println(" ");
+        
+        System.out.print("Book Titel :\t ");
+        System.out.println(box.getTitel());        //object from class books
+       
+        System.out.println(" ");
+        System.out.print("Name User :\t\t");
+        System.out.println(user.username);
+        System.out.print("ser ID :\t\t");
+        System.out.println(user.userID);           //Because she public (using class not opject)
+        System.out.print("number Phone :\t\t");
+        System.out.println(user.phoneNumber);      //Because she public (using class not opject)
+ 
+        System.out.print("Day :\t\t");
+        System.out.println(day);
+        System.out.print("Borrowing insurance :\t");
+        System.out.println(amount);
+        System.out.print("Status :\t\t");
+        System.out.println(status);
+        System.out.println("-----------------------------------");
+        System.out.close();
+       
+
+}
+}

@@ -1,0 +1,119 @@
+
+package borrow_library2021;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+
+public class user {
+ //-----------------------------------field-------------------------------------
+    
+    private ArrayList<String>userArray;
+    public static long userID;
+    public static long phoneNumber;
+    public static String username;
+    private String userAddress;
+    
+   
+//--------------------------------method and method constractor ----------------
+    
+ 
+
+    public user (String username,long userID ,long phoneNumer, String userAddress){
+        this.userArray = new ArrayList<>();
+        user.username=username;              //Because she public
+        user.userID=userID;                  //Because she public
+        user.phoneNumber=phoneNumer;         //Because she public
+        this.userAddress=userAddress;
+    }
+    
+    public void setUserID(long userID) {
+         //Because she public
+        user.userID = userID;    
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        //Because she public
+        user.phoneNumber = phoneNumber;
+    }
+
+    public void setUsername(String username) {
+         //Because she public
+        user.username = username;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public long getUserID() {
+        return userID;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+   /**
+    * this method add user to ArrayList
+    * 
+    * @param name the first element
+    * @param id the sacond  element
+    * @param phone the third element
+    * @param address the fourth element
+    *
+    * @throws FileNotFoundException 
+    */
+
+
+    public void addUser( String name, long id, long phone, String address) throws FileNotFoundException {
+        
+      //ArrayList to temporary storage 
+        userArray.add(name);
+        userArray.add(Long.toString(id));
+        userArray.add(Long.toString(phone));
+        userArray.add(address);
+        
+        }
+    /**  
+     * this method print information user to file 
+     * 
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
+    public void printuser() throws FileNotFoundException, IOException{
+        File fileuser = new File("C:\\Users\\Lenovo-\\Documents\\NetBeansProjects\\‏‏Borrow_Library - نسخة//User.txt");
+
+        FileWriter writeuser = new FileWriter(fileuser, true);
+        PrintWriter Printuser = null;
+        Printuser = new PrintWriter(writeuser);     
+      //to print the user's information 
+        Printuser.print("Name User :\t\t");
+        Printuser.println(username);
+        Printuser.print("ser ID :\t\t");
+        Printuser.println(userID);          
+        Printuser.print("number Phone :\t\t");
+        Printuser.println(phoneNumber);    
+        Printuser.print("userAddress :\t\t");
+        Printuser.println(userAddress);
+        Printuser.println("----------------------------");    
+        Printuser.close();
+       
+      
+    }
+   } 
+
+
+

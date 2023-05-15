@@ -1,0 +1,111 @@
+package borrow_library2021;
+
+import java.io.FileNotFoundException;
+
+public class Books {
+
+    //-----------------------------------field-------------------------------------
+    private String titel;        //name book
+    private String auther;        //author
+    private boolean status = true;  //status book
+
+//--------------------------------method and method constractor ----------------
+    public Books() {
+        titel = null;
+        status = true;
+    }
+
+    public Books(String titel) throws FileNotFoundException {
+        this.titel = titel;
+
+    }
+
+    public Books(String titel, String auther) throws FileNotFoundException {
+        this.titel = titel;
+        this.auther = auther;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
+    public String getTitel() {
+
+        return titel;
+    }
+
+    /**
+     * this method receives the most important research
+     *
+     * @param bookArray the frist element
+     * @param ID the sacond element
+     * @param nameBooks the third element
+     * @param userArray the fourth element 
+     * @throws FileNotFoundException
+     */
+
+    public void getBorrowBook(String[] bookArray, long ID, String nameBooks, String[] userArray) throws FileNotFoundException {
+
+        //get index of  method  searchbook
+        int indexBook = searchbook(bookArray, nameBooks);
+
+        if (indexBook == -1) {    // if the book does not exist and get the -1 of searchbook
+            System.out.println("the book is not find . ");
+            System.exit(0);
+        } else if (indexBook == 0) // if the book does exist 
+        {
+            if (indexBook == 1) {
+                status = false;
+                System.out.println("has successfully borrowed Book ");
+            }
+        }
+
+    }
+
+    /**
+     * this method get up search for the book and return index
+     *
+     * @param bookArray
+     * @param title
+     * @return
+     * @throws FileNotFoundException
+     */
+    public int searchbook(String[] bookArray, String title) throws FileNotFoundException {
+        // iterate through the books array to get the index of the needed book
+
+        for (int i = 0; i < bookArray.length; i++) {
+            if (bookArray[i] != null) {
+                if (bookArray[i].equals(title)) {
+                    return i;
+                }
+            }
+        }
+        // return -1 if the book wasn't found
+        return -1;
+    }
+
+    /**
+     *this method get up return book
+     * 
+     * @param bookArray the first element
+     * @param nameBooks  the sacond element
+     * @throws FileNotFoundException
+     */
+    public void returnBook(String[] bookArray, String nameBooks) throws FileNotFoundException {
+
+        //get index of  method  searchbook
+        int indexBook = searchbook(bookArray, nameBooks);
+
+        if (indexBook == -1) {      // if the book does not exist and get the -1 of searchbook
+
+            System.out.println("the book is not find . ");
+            System.exit(0);
+        } else {   // if the book does exist
+            status = true;
+
+            System.out.println("has successfully Rutern Book ");
+
+        }
+
+    }
+}
